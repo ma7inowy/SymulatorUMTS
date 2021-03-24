@@ -3,27 +3,44 @@
 
 #include <memory>
 #include <vector>
+#include "UserEquipment.h"
+
 
 using namespace std;
+
+class RadioNetworkController;
 
 class UserEquipment;
 
 class Cell {
 private:
+    shared_ptr<RadioNetworkController> radioNetController;
     vector<shared_ptr<UserEquipment>> userEqs;
-    const int maxCs = 3;
-    const int maxPs = 5;
-    int counterCs;
-    int counterPs;
+    int availableCs;
+    int availablePs;
+    static int counter;
+    int id;
+
 public:
-    Cell();
+    Cell(const shared_ptr<RadioNetworkController> &radioNetController);
+
+    int getId() const;
 
     const vector<shared_ptr<UserEquipment>> &getUserEqs() const;
 
-    int getCounterCs() const;
+    bool resourceRequest(UserEquipment::ConnectionType type, UserEquipment *ue);
 
-    int getCounterPs() const;
+    int getAvailableCs() const;
+
+    int getAvailablePs() const;
+
+    void reserveCs();
+
+    void reservePs();
+
+    bool addUserEquipment(shared_ptr<UserEquipment> userEq);
 
 };
 
 #endif //SYMULATORUMTS_CELL_H
+

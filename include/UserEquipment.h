@@ -2,6 +2,7 @@
 #define SYMULATORUMTS_USEREQUIPMENT_H
 
 #include <memory>
+
 using namespace std;
 
 class Cell;

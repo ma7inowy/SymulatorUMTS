@@ -1,5 +1,7 @@
 #include "../include/UserEquipment.h"
 #include "../include/Cell.h"
+#include <iostream>
+
 UserEquipment::UserEquipment(bool connected, ConnectionType connType) : connected(connected),
                                                                         connType(connType) {
 
@@ -22,8 +24,17 @@ void UserEquipment::setConnType(UserEquipment::ConnectionType connType) {
 }
 
 bool UserEquipment::callEstablishment(shared_ptr<Cell> cell) {
-    //resourceRequest
-    return false;
+    //ask for random connection
+    // rand(...)
+    if (cell->resourceRequest(UserEquipment::CS, this)) {
+        connected = true;
+        cout << "resourceConfirm" << endl;
+        return true;
+    } else {
+        cout << "resourceReject" << endl;
+        return false;
+    }
+
 }
 
 

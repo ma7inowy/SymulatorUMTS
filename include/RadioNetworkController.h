@@ -13,6 +13,11 @@ private:
     const int maxCells = 20;
 public:
     RadioNetworkController();
+
+    bool tryToReserveResources(Cell *cell, UserEquipment::ConnectionType type);
+
+    bool addCell(shared_ptr<Cell> cell);
+
 };
 
 #endif //SYMULATORUMTS_RADIONETWORKCONTROLLER_H
