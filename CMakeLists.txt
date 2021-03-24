@@ -3,4 +3,4 @@ project(SymulatorUmts)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(SymulatorUmts main.cpp src/RadioNetworkController.cpp include/RadioNetworkController.h)
+add_executable(SymulatorUmts main.cpp src/RadioNetworkController.cpp include/RadioNetworkController.h src/Cell.cpp include/Cell.h src/UserEquipment.cpp include/UserEquipment.h)
