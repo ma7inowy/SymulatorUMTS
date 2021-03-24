@@ -8,7 +8,9 @@ using namespace std;
 int main() {
     cout << "Hello, World!" << endl;
 //    UserEquipment ue(true, UserEquipment::PSANDCS);
-//    Cell c;
+//    shared_ptr<Cell> c(new Cell);
+//    ue.callEstablishment(c);
+
 //    RadioNetworkController rnc;
 
     return 0;

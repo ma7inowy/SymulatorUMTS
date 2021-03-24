@@ -1,7 +1,10 @@
 #ifndef SYMULATORUMTS_USEREQUIPMENT_H
 #define SYMULATORUMTS_USEREQUIPMENT_H
 
+#include <memory>
 using namespace std;
+
+class Cell;
 
 class UserEquipment {
 private:
@@ -20,6 +23,8 @@ public:
     ConnectionType getConnType() const;
 
     void setConnType(ConnectionType connType);
+
+    bool callEstablishment(shared_ptr<Cell> cell);
 };
 
 #endif //SYMULATORUMTS_USEREQUIPMENT_H

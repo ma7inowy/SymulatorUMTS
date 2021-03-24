@@ -2,10 +2,11 @@
 #define SYMULATORUMTS_CELL_H
 
 #include <memory>
-#include "UserEquipment.h"
 #include <vector>
 
 using namespace std;
+
+class UserEquipment;
 
 class Cell {
 private:
@@ -22,6 +23,7 @@ public:
     int getCounterCs() const;
 
     int getCounterPs() const;
+
 };
 
 #endif //SYMULATORUMTS_CELL_H

@@ -1,5 +1,5 @@
 #include "../include/UserEquipment.h"
-
+#include "../include/Cell.h"
 UserEquipment::UserEquipment(bool connected, ConnectionType connType) : connected(connected),
                                                                         connType(connType) {
 
@@ -20,4 +20,13 @@ UserEquipment::ConnectionType UserEquipment::getConnType() const {
 void UserEquipment::setConnType(UserEquipment::ConnectionType connType) {
     UserEquipment::connType = connType;
 }
+
+bool UserEquipment::callEstablishment(shared_ptr<Cell> cell) {
+    //resourceRequest
+    return false;
+}
+
+
+
+
 

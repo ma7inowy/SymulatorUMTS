@@ -1,4 +1,5 @@
 #include "../include/Cell.h"
+#include "../include/UserEquipment.h"
 
 Cell::Cell() : counterCs(0), counterPs(0) {
 
@@ -15,3 +16,5 @@ int Cell::getCounterCs() const {
 int Cell::getCounterPs() const {
     return counterPs;
 }
+
+
