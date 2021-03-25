@@ -3,9 +3,12 @@
 #include "include/Cell.h"
 #include "include/RadioNetworkController.h"
 
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 int main() {
+    srand (time(NULL));
 //    UserEquipment ue;
 //    UserEquipment ue2;
 //    UserEquipment ue3;
@@ -16,10 +19,21 @@ int main() {
 //    shared_ptr<Cell> c2(new Cell(rnc));
 //    rnc->addCell(c);
 //    rnc->addCell(c2);
-//    ue.callEstablishment(c);
-//    ue2.callEstablishment(c);
-//    ue3.callEstablishment(c);
-//    ue4.callEstablishment(c);
+//
+//    ue.callEstablishment(c2);
+//    ue2.callEstablishment(c2);
+//    cout<<"ue2"<<ue2.getConnType()<<endl;
+//    cout<<"ue"<<ue.getConnType()<<endl;
+//    cout<<c2->getAvailableCs()<<endl;
+//    cout<<c2->getAvailablePs()<<endl;
+//    ue2.handover(c);
+//    cout<<c2->getAvailableCs()<<endl;
+//    cout<<c2->getAvailablePs()<<endl;
+
+
+
 
     return 0;
 }
+
+

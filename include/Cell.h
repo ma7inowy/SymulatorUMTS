@@ -2,9 +2,7 @@
 #define SYMULATORUMTS_CELL_H
 
 #include <memory>
-#include <vector>
 #include "UserEquipment.h"
-
 
 using namespace std;
 
@@ -15,7 +13,6 @@ class UserEquipment;
 class Cell {
 private:
     shared_ptr<RadioNetworkController> radioNetController;
-    vector<shared_ptr<UserEquipment>> userEqs;
     int availableCs;
     int availablePs;
     static int counter;
@@ -26,9 +23,11 @@ public:
 
     int getId() const;
 
-    const vector<shared_ptr<UserEquipment>> &getUserEqs() const;
+    bool resourceRequest(UserEquipment::ConnectionType type);
 
-    bool resourceRequest(UserEquipment::ConnectionType type, UserEquipment *ue);
+    bool handoverRequest(UserEquipment::ConnectionType type);
+
+    bool releaseResources(UserEquipment::ConnectionType type);
 
     int getAvailableCs() const;
 
@@ -38,7 +37,9 @@ public:
 
     void reservePs();
 
-    bool addUserEquipment(shared_ptr<UserEquipment> userEq);
+    void releaseCs();
+
+    void releasePs();
 
 };
 

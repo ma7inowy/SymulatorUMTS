@@ -9,18 +9,32 @@ Cell::Cell(const shared_ptr<RadioNetworkController> &radioNetController)
         : radioNetController(radioNetController), id(++counter), availableCs(3), availablePs(5) {
 }
 
-const vector<shared_ptr<UserEquipment>> &Cell::getUserEqs() const {
-    return userEqs;
+bool Cell::resourceRequest(UserEquipment::ConnectionType type) {
+    if (radioNetController->tryToReserveResources(this, type)) {
+        cout << "resourceConfirm: callEstablishment" << endl;
+        return true;
+    } else {
+        cout << "resourceReject: callEstablishment" << endl;
+        return false;
+    }
 }
 
-bool Cell::resourceRequest(UserEquipment::ConnectionType type, UserEquipment *ue) {
-    // cell ask rnc if can add Ue to its vector
-    if (radioNetController->tryToReserveResources(this, type)) {
-        // if tryToReserveResources -> addUe to vector of Ues
-        addUserEquipment(shared_ptr<UserEquipment>(ue));
-        // cout << "Size of Ues vector in cell: " << userEqs.size() << endl;
+bool Cell::handoverRequest(UserEquipment::ConnectionType type) {
+    if (radioNetController->reserveResourcesHandover(this, type)) {
+        cout << "resourceConfirm: handover" << endl;
         return true;
-    } else return false;
+    } else {
+        cout << "resourceReject: handover" << endl;
+        return false;
+    }
+}
+
+bool Cell::releaseResources(UserEquipment::ConnectionType type) {
+    if (radioNetController->releaseResourcesHandover(this, type)) {
+        return true;
+    }
+    return false;
+
 }
 
 int Cell::getId() const {
@@ -44,10 +58,16 @@ void Cell::reservePs() {
 
 }
 
-bool Cell::addUserEquipment(shared_ptr<UserEquipment> userEq) {
-    //it doesnt check bcs RNC checks
-    userEqs.push_back(userEq);
-    return true;
+void Cell::releaseCs() {
+    availableCs++;
 }
+
+void Cell::releasePs() {
+    availablePs++;
+}
+
+
+
+
 
 

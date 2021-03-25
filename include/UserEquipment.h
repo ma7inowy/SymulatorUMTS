@@ -10,6 +10,7 @@ class Cell;
 class UserEquipment {
 private:
     bool connected;
+    shared_ptr<Cell> currentCell;
 public:
     enum ConnectionType {
         NONE, PS, CS, PSANDCS
@@ -26,6 +27,13 @@ public:
     void setConnType(ConnectionType connType);
 
     bool callEstablishment(shared_ptr<Cell> cell);
+
+    bool handover(const shared_ptr<Cell> &newCell);
+
+    const shared_ptr<Cell> &getCurrentCell() const;
+
+    ConnectionType getRandomConnType();
+
 };
 
 #endif //SYMULATORUMTS_USEREQUIPMENT_H

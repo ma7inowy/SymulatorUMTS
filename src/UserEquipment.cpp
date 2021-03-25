@@ -2,7 +2,10 @@
 #include "../include/Cell.h"
 #include <iostream>
 
-UserEquipment::UserEquipment(bool connected, ConnectionType connType) : connected(connected),
+#include <cstdlib>
+#include <ctime>
+
+UserEquipment::UserEquipment(bool connected, ConnectionType connType) : currentCell(nullptr), connected(connected),
                                                                         connType(connType) {
 
 }
@@ -24,18 +27,42 @@ void UserEquipment::setConnType(UserEquipment::ConnectionType connType) {
 }
 
 bool UserEquipment::callEstablishment(shared_ptr<Cell> cell) {
-    //ask for random connection
-    // rand(...)
-    if (cell->resourceRequest(UserEquipment::CS, this)) {
+    //asks for random connection
+    ConnectionType randomConnType = getRandomConnType();
+    if (cell->resourceRequest(randomConnType)) {
         connected = true;
-        cout << "resourceConfirm" << endl;
+        currentCell = cell;
+        connType = randomConnType;
         return true;
     } else {
-        cout << "resourceReject" << endl;
         return false;
     }
 
 }
+
+bool UserEquipment::handover(const shared_ptr<Cell> &newCell) {
+    // only if connected = true;
+    if (currentCell->releaseResources(getConnType())) {
+        if (newCell->handoverRequest(getConnType())) {
+            currentCell = newCell;
+            return true;
+        }
+    } else return false;
+    return false;
+}
+
+const shared_ptr<Cell> &UserEquipment::getCurrentCell() const {
+    return currentCell;
+}
+
+UserEquipment::ConnectionType UserEquipment::getRandomConnType() {
+    int i = (rand() % 3 + 1); // rand from 1 to 3
+    auto randomConnType = static_cast<ConnectionType>(i);
+    return randomConnType;
+}
+
+
+
 
 
 

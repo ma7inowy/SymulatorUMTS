@@ -16,6 +16,10 @@ public:
 
     bool tryToReserveResources(Cell *cell, UserEquipment::ConnectionType type);
 
+    bool reserveResourcesHandover(Cell *cell, UserEquipment::ConnectionType type);
+
+    bool releaseResourcesHandover(Cell *cell, UserEquipment::ConnectionType type);
+
     bool addCell(shared_ptr<Cell> cell);
 
 };
