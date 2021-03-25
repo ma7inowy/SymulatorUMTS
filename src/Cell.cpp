@@ -10,7 +10,7 @@ Cell::Cell(const shared_ptr<RadioNetworkController> &radioNetController)
 }
 
 bool Cell::resourceRequest(UserEquipment::ConnectionType type) {
-    if (radioNetController->tryToReserveResources(this, type)) {
+    if (radioNetController->resourceReserve(this, type)) {
         cout << "resourceConfirm: callEstablishment" << endl;
         return true;
     } else {
@@ -19,8 +19,8 @@ bool Cell::resourceRequest(UserEquipment::ConnectionType type) {
     }
 }
 
-bool Cell::handoverRequest(UserEquipment::ConnectionType type) {
-    if (radioNetController->reserveResourcesHandover(this, type)) {
+bool Cell::resourceHandoverRequest(UserEquipment::ConnectionType type) {
+    if (radioNetController->resourceHandoverReserve(this, type)) {
         cout << "resourceConfirm: handover" << endl;
         return true;
     } else {
@@ -29,8 +29,8 @@ bool Cell::handoverRequest(UserEquipment::ConnectionType type) {
     }
 }
 
-bool Cell::releaseResources(UserEquipment::ConnectionType type) {
-    if (radioNetController->releaseResourcesHandover(this, type)) {
+bool Cell::resourceReleaseRequest(UserEquipment::ConnectionType type) {
+    if (radioNetController->resourceRelease(this, type)) {
         return true;
     }
     return false;

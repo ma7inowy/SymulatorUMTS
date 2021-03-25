@@ -25,9 +25,9 @@ public:
 
     bool resourceRequest(UserEquipment::ConnectionType type);
 
-    bool handoverRequest(UserEquipment::ConnectionType type);
+    bool resourceHandoverRequest(UserEquipment::ConnectionType type);
 
-    bool releaseResources(UserEquipment::ConnectionType type);
+    bool resourceReleaseRequest(UserEquipment::ConnectionType type);
 
     int getAvailableCs() const;
 

@@ -14,11 +14,11 @@ private:
 public:
     RadioNetworkController();
 
-    bool tryToReserveResources(Cell *cell, UserEquipment::ConnectionType type);
+    bool resourceReserve(Cell *cell, UserEquipment::ConnectionType type);
 
-    bool reserveResourcesHandover(Cell *cell, UserEquipment::ConnectionType type);
+    bool resourceHandoverReserve(Cell *cell, UserEquipment::ConnectionType type);
 
-    bool releaseResourcesHandover(Cell *cell, UserEquipment::ConnectionType type);
+    bool resourceRelease(Cell *cell, UserEquipment::ConnectionType type);
 
     bool addCell(shared_ptr<Cell> cell);
 

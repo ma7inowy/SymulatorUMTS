@@ -2,7 +2,7 @@
 
 RadioNetworkController::RadioNetworkController() {}
 
-bool RadioNetworkController::tryToReserveResources(Cell *cell, UserEquipment::ConnectionType type) {
+bool RadioNetworkController::resourceReserve(Cell *cell, UserEquipment::ConnectionType type) {
     for (auto &it : cells) {
         if (it->getId() == cell->getId()) {
             if (type == UserEquipment::PS) {
@@ -29,7 +29,7 @@ bool RadioNetworkController::tryToReserveResources(Cell *cell, UserEquipment::Co
     return false;
 }
 
-bool RadioNetworkController::reserveResourcesHandover(Cell *cell, UserEquipment::ConnectionType type) {
+bool RadioNetworkController::resourceHandoverReserve(Cell *cell, UserEquipment::ConnectionType type) {
     for (auto &it : cells) {
         if (it->getId() == cell->getId()) {
             if (type == UserEquipment::PS) {
@@ -48,7 +48,7 @@ bool RadioNetworkController::reserveResourcesHandover(Cell *cell, UserEquipment:
     return false;
 }
 
-bool RadioNetworkController::releaseResourcesHandover(Cell *cell, UserEquipment::ConnectionType type) {
+bool RadioNetworkController::resourceRelease(Cell *cell, UserEquipment::ConnectionType type) {
     for (auto &it : cells) {
         if (it->getId() == cell->getId()) {
             if (type == UserEquipment::PS) {

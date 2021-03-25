@@ -1,7 +1,6 @@
 #include "../include/UserEquipment.h"
 #include "../include/Cell.h"
 #include <iostream>
-
 #include <cstdlib>
 #include <ctime>
 
@@ -26,7 +25,7 @@ void UserEquipment::setConnType(UserEquipment::ConnectionType connType) {
     UserEquipment::connType = connType;
 }
 
-bool UserEquipment::callEstablishment(shared_ptr<Cell> cell) {
+bool UserEquipment::callEstablishment(const shared_ptr<Cell> &cell) {
     //asks for random connection
     ConnectionType randomConnType = getRandomConnType();
     if (cell->resourceRequest(randomConnType)) {
@@ -42,13 +41,22 @@ bool UserEquipment::callEstablishment(shared_ptr<Cell> cell) {
 
 bool UserEquipment::handover(const shared_ptr<Cell> &newCell) {
     // only if connected = true;
-    if (currentCell->releaseResources(getConnType())) {
-        if (newCell->handoverRequest(getConnType())) {
+    if (currentCell->resourceReleaseRequest(getConnType())) {
+        if (newCell->resourceHandoverRequest(getConnType())) {
             currentCell = newCell;
             return true;
         }
     } else return false;
     return false;
+}
+
+bool UserEquipment::callRelease() {
+    if (currentCell->resourceReleaseRequest(getConnType())) {
+        currentCell = nullptr;
+        connType = UserEquipment::NONE;
+        connected = false;
+        return true;
+    } else return false;
 }
 
 const shared_ptr<Cell> &UserEquipment::getCurrentCell() const {

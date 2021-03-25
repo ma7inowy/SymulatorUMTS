@@ -29,10 +29,14 @@ int main() {
 //    ue2.handover(c);
 //    cout<<c2->getAvailableCs()<<endl;
 //    cout<<c2->getAvailablePs()<<endl;
-
-
-
-
+//
+//    cout<<"conn type: "<<ue.getConnType()<<endl;
+//    cout<<"current cell id: "<<ue.getCurrentCell()->getId()<<endl;
+//    cout<<"is connected: "<<ue.isConnected()<<endl;
+//    ue.callRelease();
+//    cout<<"conn type: "<<ue.getConnType()<<endl;
+//    cout<<"current cell id: "<<ue.getCurrentCell()<<endl;
+//    cout<<"is connected: "<<ue.isConnected()<<endl;
     return 0;
 }
 

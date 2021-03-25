@@ -26,9 +26,11 @@ public:
 
     void setConnType(ConnectionType connType);
 
-    bool callEstablishment(shared_ptr<Cell> cell);
+    bool callEstablishment(const shared_ptr<Cell> &cell);
 
     bool handover(const shared_ptr<Cell> &newCell);
+
+    bool callRelease();
 
     const shared_ptr<Cell> &getCurrentCell() const;
 
