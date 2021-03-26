@@ -1,5 +1,6 @@
 #include "../include/RadioNetworkController.h"
 
+
 RadioNetworkController::RadioNetworkController() {}
 
 bool RadioNetworkController::resourceReserve(Cell *cell, UserEquipment::ConnectionType type) {
@@ -21,7 +22,7 @@ bool RadioNetworkController::resourceReserve(Cell *cell, UserEquipment::Connecti
                     it->reservePs();
                     return true;
                 }
-            } else { return false; }
+            }
         }
 
     }

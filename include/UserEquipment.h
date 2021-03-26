@@ -2,6 +2,7 @@
 #define SYMULATORUMTS_USEREQUIPMENT_H
 
 #include <memory>
+#include <vector>
 
 using namespace std;
 
@@ -35,6 +36,8 @@ public:
     const shared_ptr<Cell> &getCurrentCell() const;
 
     ConnectionType getRandomConnType();
+
+    void randomAction(const vector<shared_ptr<Cell>> &listOfCells);
 
 };
 

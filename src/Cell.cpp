@@ -11,29 +11,38 @@ Cell::Cell(const shared_ptr<RadioNetworkController> &radioNetController)
 
 bool Cell::resourceRequest(UserEquipment::ConnectionType type) {
     if (radioNetController->resourceReserve(this, type)) {
-        cout << "resourceConfirm: callEstablishment" << endl;
+        cout << "resourceConfirm: callEstablishment" << " (PS:" << getAvailablePs() << ", CS:" << getAvailableCs()
+             << ") cell_id:" << getId() << endl;
         return true;
     } else {
-        cout << "resourceReject: callEstablishment" << endl;
+        cout << "resourceReject: callEstablishment" << " (PS:" << getAvailablePs() << ", CS:" << getAvailableCs()
+             << ") cell_id:" << getId() << endl;
         return false;
     }
 }
 
 bool Cell::resourceHandoverRequest(UserEquipment::ConnectionType type) {
     if (radioNetController->resourceHandoverReserve(this, type)) {
-        cout << "resourceConfirm: handover" << endl;
+        cout << "resourceConfirm: handover" << " (PS:" << getAvailablePs() << ", CS:" << getAvailableCs()
+             << ") cell_id:" << getId() << endl;
         return true;
     } else {
-        cout << "resourceReject: handover" << endl;
+        cout << "resourceReject: handover" << " (PS:" << getAvailablePs() << ", CS:" << getAvailableCs() << ") cell_id:"
+             << getId() << endl;
         return false;
     }
 }
 
 bool Cell::resourceReleaseRequest(UserEquipment::ConnectionType type) {
     if (radioNetController->resourceRelease(this, type)) {
+        cout << "resourceConfirm: callRelease" << " (PS:" << getAvailablePs() << ", CS:" << getAvailableCs()
+             << ") cell_id:" << getId() << endl;
         return true;
+    } else {
+        cout << "resourceReject: callRelease" << " (PS:" << getAvailablePs() << ", CS:" << getAvailableCs()
+             << ") cell_id:" << getId() << endl;
+        return false;
     }
-    return false;
 
 }
 

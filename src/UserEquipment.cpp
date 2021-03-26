@@ -26,7 +26,6 @@ void UserEquipment::setConnType(UserEquipment::ConnectionType connType) {
 }
 
 bool UserEquipment::callEstablishment(const shared_ptr<Cell> &cell) {
-    //asks for random connection
     ConnectionType randomConnType = getRandomConnType();
     if (cell->resourceRequest(randomConnType)) {
         connected = true;
@@ -46,7 +45,7 @@ bool UserEquipment::handover(const shared_ptr<Cell> &newCell) {
             currentCell = newCell;
             return true;
         }
-    } else return false;
+    }
     return false;
 }
 
@@ -67,6 +66,30 @@ UserEquipment::ConnectionType UserEquipment::getRandomConnType() {
     int i = (rand() % 3 + 1); // rand from 1 to 3
     auto randomConnType = static_cast<ConnectionType>(i);
     return randomConnType;
+}
+
+void UserEquipment::randomAction(const vector<shared_ptr<Cell>> &listOfCells) {
+    int action = (rand() % 2 + 1); // rand from 1 to 2
+
+    int indexOfRandomCell = rand() % listOfCells.size();
+    if (isConnected()) {
+        switch (action) {
+            case 1: {
+                handover(listOfCells[indexOfRandomCell]);
+                break;
+            }
+            case 2:
+                callRelease();
+                break;
+            default:
+                cout << "def" << endl;
+                break;
+        }
+
+    } else {
+        callEstablishment(listOfCells[indexOfRandomCell]);
+    }
+
 }
 
 
