@@ -71,10 +71,14 @@ UserEquipment::ConnectionType UserEquipment::getRandomConnType() {
 void UserEquipment::randomAction(const vector<shared_ptr<Cell>> &listOfCells) {
     int action = (rand() % 2 + 1); // rand from 1 to 2
 
-    int indexOfRandomCell = rand() % listOfCells.size();
+    int indexOfRandomCell;
+
     if (isConnected()) {
         switch (action) {
             case 1: {
+                do{
+                    indexOfRandomCell = rand() % listOfCells.size();
+                } while (indexOfRandomCell == getCurrentCell()->getId());
                 handover(listOfCells[indexOfRandomCell]);
                 break;
             }
@@ -87,6 +91,7 @@ void UserEquipment::randomAction(const vector<shared_ptr<Cell>> &listOfCells) {
         }
 
     } else {
+        indexOfRandomCell = rand() % listOfCells.size();
         callEstablishment(listOfCells[indexOfRandomCell]);
     }
 

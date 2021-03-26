@@ -18,10 +18,13 @@ int main() {
     shared_ptr<RadioNetworkController> rnc(new RadioNetworkController);
     shared_ptr<Cell> c(new Cell(rnc));
     shared_ptr<Cell> c2(new Cell(rnc));
+    shared_ptr<Cell> c3(new Cell(rnc));
     rnc->addCell(c);
     rnc->addCell(c2);
+    rnc->addCell(c3);
     cells.push_back(c);
     cells.push_back(c2);
+    cells.push_back(c3);
 
     ///test with single UE
     cout<<"-----------"<<endl;

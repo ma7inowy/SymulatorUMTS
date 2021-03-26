@@ -6,7 +6,7 @@
 int Cell::counter = 0;
 
 Cell::Cell(const shared_ptr<RadioNetworkController> &radioNetController)
-        : radioNetController(radioNetController), id(++counter), availableCs(3), availablePs(5) {
+        : radioNetController(radioNetController), id(counter++), availableCs(3), availablePs(5) {
 }
 
 bool Cell::resourceRequest(UserEquipment::ConnectionType type) {
