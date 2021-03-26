@@ -86,13 +86,13 @@ int main() {
 //    cout<<"is connected: "<<ue2->isConnected()<<endl;
 /////////////////////////////////////////////////////////////////
 
-    /// UserEquipment container
-    vector<shared_ptr<UserEquipment>> uesVector;
-
     /// parameters
     int amountOfCells = 20;
     int amountOfUes = amountOfCells * 35;
     int amountOfIterations = 3;
+
+    /// UserEquipment container
+    vector<shared_ptr<UserEquipment>> uesVector;
 
     /// RNC
     shared_ptr<RadioNetworkController> rnc1(new RadioNetworkController);

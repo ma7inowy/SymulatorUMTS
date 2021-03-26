@@ -10,36 +10,36 @@ Cell::Cell(const shared_ptr<RadioNetworkController> &radioNetController)
 
 bool Cell::resourceRequest(UserEquipment::ConnectionType type) {
     if (radioNetController->resourceReserve(this, type)) {
-        cout << "resourceConfirm: callEstablishment" << " (PS:" << getAvailablePs() << ", CS:" << getAvailableCs()
-             << ") cell_id:" << getId() << endl;
+        cout << "resourceConfirm: callEstablishment" << " (PS:" << availablePs << ", CS:" << availableCs
+             << ") cell_id:" << id << endl;
         return true;
     } else {
-        cout << "resourceReject: callEstablishment" << " (PS:" << getAvailablePs() << ", CS:" << getAvailableCs()
-             << ") cell_id:" << getId() << endl;
+        cout << "resourceReject: callEstablishment" << " (PS:" << availablePs << ", CS:" << availableCs
+             << ") cell_id:" << id << endl;
         return false;
     }
 }
 
 bool Cell::resourceHandoverRequest(UserEquipment::ConnectionType type) {
     if (radioNetController->resourceHandoverReserve(this, type)) {
-        cout << "resourceConfirm: handover" << " (PS:" << getAvailablePs() << ", CS:" << getAvailableCs()
-             << ") cell_id:" << getId() << endl;
+        cout << "resourceConfirm: handover" << " (PS:" << availablePs << ", CS:" << availableCs
+             << ") cell_id:" << id << endl;
         return true;
     } else {
-        cout << "resourceReject: handover" << " (PS:" << getAvailablePs() << ", CS:" << getAvailableCs() << ") cell_id:"
-             << getId() << endl;
+        cout << "resourceReject: handover" << " (PS:" << availablePs << ", CS:" << availableCs << ") cell_id:"
+             << id << endl;
         return false;
     }
 }
 
 bool Cell::resourceReleaseRequest(UserEquipment::ConnectionType type) {
     if (radioNetController->resourceRelease(this, type)) {
-        cout << "resourceConfirm: callRelease" << " (PS:" << getAvailablePs() << ", CS:" << getAvailableCs()
-             << ") cell_id:" << getId() << endl;
+        cout << "resourceConfirm: callRelease" << " (PS:" << availablePs << ", CS:" << availableCs
+             << ") cell_id:" << id << endl;
         return true;
     } else {
-        cout << "resourceReject: callRelease" << " (PS:" << getAvailablePs() << ", CS:" << getAvailableCs()
-             << ") cell_id:" << getId() << endl;
+        cout << "resourceReject: callRelease" << " (PS:" << availablePs << ", CS:" << availableCs
+             << ") cell_id:" << id << endl;
         return false;
     }
 
