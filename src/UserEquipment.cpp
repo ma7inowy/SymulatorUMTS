@@ -39,7 +39,6 @@ bool UserEquipment::callEstablishment(const shared_ptr<Cell> &cell) {
 }
 
 bool UserEquipment::handover(const shared_ptr<Cell> &newCell) {
-    // only if connected = true;
     if (currentCell->resourceReleaseRequest(getConnType())) {
         if (newCell->resourceHandoverRequest(getConnType())) {
             currentCell = newCell;

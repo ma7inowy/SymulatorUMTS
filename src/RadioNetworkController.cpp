@@ -75,4 +75,8 @@ bool RadioNetworkController::addCell(shared_ptr<Cell> cell) {
     } else return false;
 }
 
+const vector<shared_ptr<Cell>> &RadioNetworkController::getCells() const {
+    return cells;
+}
+
 

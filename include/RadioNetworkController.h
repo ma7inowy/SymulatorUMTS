@@ -22,6 +22,8 @@ public:
 
     bool addCell(shared_ptr<Cell> cell);
 
+    const vector<shared_ptr<Cell>> &getCells() const;
+
 };
 
 #endif //SYMULATORUMTS_RADIONETWORKCONTROLLER_H
