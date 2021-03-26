@@ -35,7 +35,7 @@ public:
 
     const shared_ptr<Cell> &getCurrentCell() const;
 
-    ConnectionType getRandomConnType();
+    static ConnectionType getRandomConnType();
 
     void randomAction(const vector<shared_ptr<Cell>> &listOfCells);
 

@@ -1,5 +1,4 @@
 #include "../include/Cell.h"
-#include "../include/UserEquipment.h"
 #include "../include/RadioNetworkController.h"
 #include <iostream>
 

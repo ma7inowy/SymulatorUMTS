@@ -2,7 +2,6 @@
 #include "../include/Cell.h"
 #include <iostream>
 #include <cstdlib>
-#include <ctime>
 
 UserEquipment::UserEquipment(bool connected, ConnectionType connType) : currentCell(nullptr), connected(connected),
                                                                         connType(connType) {
@@ -62,13 +61,13 @@ const shared_ptr<Cell> &UserEquipment::getCurrentCell() const {
 }
 
 UserEquipment::ConnectionType UserEquipment::getRandomConnType() {
-    int i = (rand() % 3 + 1); // rand from 1 to 3
+    int i = (rand() % 3 + 1);
     auto randomConnType = static_cast<ConnectionType>(i);
     return randomConnType;
 }
 
 void UserEquipment::randomAction(const vector<shared_ptr<Cell>> &listOfCells) {
-    int action = (rand() % 2 + 1); // rand from 1 to 2
+    int action = (rand() % 2 + 1);
 
     int indexOfRandomCell;
 

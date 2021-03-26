@@ -68,7 +68,7 @@ bool RadioNetworkController::resourceRelease(Cell *cell, UserEquipment::Connecti
     return false;
 }
 
-bool RadioNetworkController::addCell(shared_ptr<Cell> cell) {
+bool RadioNetworkController::addCell(const shared_ptr<Cell>& cell) {
     if (cells.size() < maxCells) {
         cells.push_back(cell);
         return true;
